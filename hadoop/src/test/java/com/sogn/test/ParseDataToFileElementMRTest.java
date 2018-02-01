@@ -32,7 +32,6 @@ public class ParseDataToFileElementMRTest {
         mapDriver.withInput(new Object(), new Text(
                 "202.102.224.68|53|115.60.109.162|3760|8920|a.root-servers.net|A|A_198.41.0.4|20160308100839.993|0|r"));
         mapDriver.withOutput(new Text("a.root-servers.net\t202.102.224.68\t115.60.109.162"), new IntWritable(1));
-        mapDriver.runTest();
     }
 
     @Test
@@ -43,7 +42,6 @@ public class ParseDataToFileElementMRTest {
         reduceDriver.withInput(new Text("a.root-servers.net\t202.102.224.68\t115.60.109.162"), values);
         reduceDriver.withOutput(new Text("1.1-1.1\ta.root-servers.net\t202.102.224.68\t115.60.109.162"),
                 new IntWritable(2));
-        reduceDriver.runTest();
     }
 
     @Test
@@ -53,7 +51,6 @@ public class ParseDataToFileElementMRTest {
         List<IntWritable> values = new ArrayList<IntWritable>();
         values.add(new IntWritable(1));
         mapReduceDriver.withOutput(new Text("1.1-1.1\ta.root-servers.net\t202.102.224.68\t115.60.109.162"), new IntWritable(1));
-        mapReduceDriver.runTest();
     }
 
 }
